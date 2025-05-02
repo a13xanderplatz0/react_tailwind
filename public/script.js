@@ -35,6 +35,7 @@ function googleSignIn() {
   });
 }
 
+
 function handleAuthStateChanged(user) {
   user ? console.log("User is signed in:", user) : (console.log("User is signed out"), window.location.href = "index.html");
 }
@@ -46,15 +47,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("google-sign-in")?.addEventListener("click", googleSignIn);
   }
 
-  const toggleButtons = document.querySelectorAll('.toggle-password');
-  toggleButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const passwordInput = this.previousElementSibling;
+  const togglePasswordIcons = document.querySelectorAll(".toggle-password");
 
-      if (passwordInput) {
-        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        this.classList.toggle('fa-eye');
-        this.classList.toggle('fa-eye-slash');
+  togglePasswordIcons.forEach(icon => {
+    icon.addEventListener("click", () => {
+      const targetId = icon.getAttribute("data-target");
+      const passwordField = document.getElementById(targetId);
+
+      if (passwordField) {
+        const isPassword = passwordField.type === "password";
+        passwordField.type = isPassword ? "text" : "password";
+
+        icon.classList.toggle("fa-eye");
+        icon.classList.toggle("fa-eye-slash");
       }
     });
   });
