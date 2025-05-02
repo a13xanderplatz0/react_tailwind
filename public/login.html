@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
+    <title>StudyHub - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            margin: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
 </head>
-
 <body>
     <div class="container">
-        <h1>Welcome to StudyHub</h1>
-        <a href="index.html"><button>Login</button></a>
-        <a href="signup.html"><button>Signup</button></a>
-    </div>
-</body>
+        <div class="form-section">
+            <header>
+                <h1>StudyHub</h1>
+            </header>
 
+            <main>
+                <h2>Begin Your Adventure</h2>
+                <div class="social-login">
+                <button id="google-sign-in" class="social-btn google">
+                    <i class="fab fa-google"></i>
+                   
+                </button>
+                <button class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                    
+                </button>
+                <button class="social-btn apple">
+                    <i class="fab fa-apple"></i>
+                    
+                </button>
+                </div>
+
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <form id="signupForm">
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="password-container">
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                            <i class="fas fa-eye toggle-password" data-target="signup-password"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-start">Let's Start</button>
+                </form>
+            </main>
+        </div>
+        
+        <div class="image-section">
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="face front"></div>  
+                    <div class="face back"></div>   
+                    <div class="face right"></div>  
+                    <div class="face left"></div>   
+                    <div class="face top"></div>    
+                    <div class="face bottom"></div> 
+                </div>
+            </div>
+            <div class="image-buttons">
+                <a href="index.html" class="img-btn">Log In</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+
+</body>
 </html>
