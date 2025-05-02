@@ -1,6 +1,6 @@
 // Importar las funciones necesarias de Firebase
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -23,50 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener('click', function() {
             const passwordInput = this.previousElementSibling;
 
-<<<<<<< HEAD
-function googleSignIn() {
-  signInWithPopup(auth, googleProvider).then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-    console.log("User signed in:", user);
-    window.location.href = "profile.html";
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    console.error("Error signing in:", errorCode, errorMessage);
-  });
-}
-
-
-function handleAuthStateChanged(user) {
-  user ? console.log("User is signed in:", user) : (console.log("User is signed out"), window.location.href = "index.html");
-}
-
-onAuthStateChanged(auth, handleAuthStateChanged);
-
-document.addEventListener("DOMContentLoaded", function () {
-  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
-    document.getElementById("google-sign-in")?.addEventListener("click", googleSignIn);
-  }
-
-  const togglePasswordIcons = document.querySelectorAll(".toggle-password");
-
-  togglePasswordIcons.forEach(icon => {
-    icon.addEventListener("click", () => {
-      const targetId = icon.getAttribute("data-target");
-      const passwordField = document.getElementById(targetId);
-
-      if (passwordField) {
-        const isPassword = passwordField.type === "password";
-        passwordField.type = isPassword ? "text" : "password";
-
-        icon.classList.toggle("fa-eye");
-        icon.classList.toggle("fa-eye-slash");
-      }
-=======
             if (passwordInput && (passwordInput.type === 'password' || passwordInput.type === 'text')) {
                 const isPassword = passwordInput.type === 'password';
                 passwordInput.type = isPassword ? 'text' : 'password';
@@ -74,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.toggle('fa-eye-slash', !isPassword);
             }
         });
->>>>>>> e63f51e27327c41bc77a70051dc4082df31a8910
     });
 
     ['loginForm', 'signupForm'].forEach(formId => {
@@ -105,4 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error('Error al iniciar sesión con Google:', error);
             });
     });
+
+    // Manejar estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("User is signed in:", user);
+        } else {
+            console.log("User is signed out");
+            window.location.href = "index.html";
+        }
+    });
+
+    if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+        document.getElementById("google-sign-in")?.addEventListener("click", googleSignIn);
+    }
 });
