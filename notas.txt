@@ -1,0 +1,17 @@
+import { sendIdTokenToBackend } from "../authBackend.js"; // Ajusta la ruta según tu estructura de carpetas
+
+function googleSignIn() {
+  signInWithPopup(auth, googleProvider)
+    .then(async (result) => {
+      const user = result.user;
+      console.log("User signed in:", user);
+
+      // Enviar el ID token al backend usando la función modular
+      await sendIdTokenToBackend();
+
+      window.location.href = "profile.html";
+    })
+    .catch((error) => {
+      console.error("Error signing in:", error.code, error.message);
+    });
+}
