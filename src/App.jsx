@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Login from './pages/Login';
 import Signup from './pages/Signup';
 import './styles.css';
 
@@ -17,7 +16,7 @@ function App() {
                 <h1>StudyHub</h1>
             </header>
             <main>
-                <h2>Welcome to StudyHub</h2>
+                
                 {showLogin ? <Login /> : <Signup />}
                 <div className="image-buttons">
                     <button onClick={toggleForm} className="img-btn">{
